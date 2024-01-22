@@ -42,6 +42,20 @@ public class Fan extends BaseEntity  {
     @OneToMany(mappedBy = "fan")
     private List<Winning> winningList = new ArrayList<>();
 
+    // save 위한 생성자 --
+
+
+    public Fan(String email, String profileImageUrl, String name, String nickname, LocalDate birth, String certificationImageUrl, int changeCount, boolean isBlacklist) {
+        this.email = email;
+        this.profileImageUrl = profileImageUrl;
+        this.name = name;
+        this.nickname = nickname;
+        this.birth = birth;
+        this.certificationImageUrl = certificationImageUrl;
+        this.changeCount = changeCount;
+        this.isBlacklist = isBlacklist;
+    }
+
     // update profile
     public void update(String nickname, String profileImageUrl){
         this.nickname = nickname;

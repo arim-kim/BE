@@ -1,5 +1,6 @@
 package com.example.BE.controller;
 
+import com.example.BE.fan.Fan;
 import com.example.BE.fan.repository.FanRepsitory;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
@@ -30,6 +31,6 @@ class FanMypageControllerTest {
 
 
         // then
-    }
 
+    }
 }

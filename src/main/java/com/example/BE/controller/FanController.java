@@ -1,14 +1,18 @@
 package com.example.BE.controller;
 
+import com.example.BE.common.HttpStatusEnum;
+import com.example.BE.common.Message;
 import com.example.BE.fan.dto.FanMyPageResponseDto;
 import com.example.BE.fan.dto.FanMyPageUpdateRequestDto;
 import com.example.BE.fan.service.FanService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
-public class FanMypageController
+public class FanController
 {
 
     private final FanService fanService;
@@ -17,8 +21,10 @@ public class FanMypageController
      * 팬 마이페이지 조회 하기
      */
     @GetMapping("/mypage/{id}")
-    public FanMyPageResponseDto save(@PathVariable("id") Long id){
-        return fanService.findById(id);
+    public ResponseEntity<Message> mypage(@PathVariable("id") Long id){
+        FanMyPageResponseDto dto = fanService.findById(id);
+        Message message = new Message(HttpStatusEnum.OK, "성공", dto);
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 
     @PutMapping("/mypage/edit/profile/{id}")
